@@ -1,33 +1,84 @@
-export function getAssetSheet() {
+export function getAssetsSheet() {
     return {
         title: "Assets",
         lists: [
             {
                 title: "Cash and Investments",
                 items: [
-                    {name: "Chequing"},
-                    {name: "Savings for Taxes"},
-                    {name: "Rainy Day Fund"},
-                    {name: "Savings for Fun"},
-                    {name: "Savings for Travel"},
-                    {name: "Savings for Personal Development"},
-                    {name: "Investment 1"},
-                    {name: "Investment 2"},
-                    {name: "Investment 3"},
-                    {name: "Investment 4"},
-                    {name: "Investment 5"}
+                    {
+                        id: "chequing",
+                        name: "Chequing"
+                    },
+                    {
+                        id: "savingsForTaxes",
+                        name: "Savings for Taxes"
+                    },
+                    {
+                        id: "rainyDayFund",
+                        name: "Rainy Day Fund"
+                    },
+                    {
+                        id: "savingsForFun",
+                        name: "Savings for Fun"
+                    },
+                    {
+                        id: "savingsForTravel",
+                        name: "Savings for Travel"
+                    },
+                    {
+                        id: "savingsForPersonalDevelopment",
+                        name: "Savings for Personal Development"
+                    },
+                    {
+                        id: "investment1",
+                        name: "Investment 1"
+                    },
+                    {
+                        id: "investment2",
+                        name: "Investment 2"
+                    },
+                    {
+                        id: "investment3",
+                        name: "Investment 3"
+                    },
+                    {
+                        id: "investment4",
+                        name: "Investment 4"
+                    },
+                    {
+                        id: "investment5",
+                        name: "Investment 5"
+                    }
                 ]
             },
             {
                 title: "Long Term Assets",
                 items: [
-                    {name: "Primary Home"},
-                    {name: "Second Home"},
-                    {name: "Other"}
+                    {
+                        id: "primaryHome",
+                        name: "Primary Home"
+                    },
+                    {
+                        id: "secondHome",
+                        name: "Second Home"
+                    },
+                    {
+                        id: "other",
+                        name: "Other"
+                    }
                 ]
             }
         ]
     };
+}
+
+export function getAssetValues() {
+    return [
+        {
+            id: "chequing",
+            value: "55.60"
+        }
+    ]
 }
 
 export function getLiabilitiesSheet() {
@@ -35,21 +86,60 @@ export function getLiabilitiesSheet() {
         title: "Liabilities",
         lists: [
             {
-                title: "LPart1",
+                title: "Short Term Liabilities",
                 items: [
-                    {name: "l0.0"},
-                    {name: "l0.1"},
-                    {name: "l0.2"}
+                    {
+                        id: "creditCard1",
+                        name: "Credit Card 1"
+                    },
+                    {
+                        id: "creditCard2",
+                        name: "Credit Card 2"
+                    },
+                    {
+                        id: "others",
+                        name: "(others...)"
+                    }
                 ]
             },
             {
-                title: "LPart2",
+                title: "Long Term Debt",
                 items: [
-                    {name: "l1.0"},
-                    {name: "l1.1"},
-                    {name: "l1.2"}
+                    {
+                        id: "mortgage1",
+                        name: "Mortgage 1"
+                    },
+                    {
+                        id: "mortgage2",
+                        name: "Mortgage 2"
+                    },
+                    {
+                        id: "lineOfCredit",
+                        name: "Line of Credit"
+                    },
+                    {
+                        id: "investmentLoan",
+                        name: "Investment Loan"
+                    },
+                    {
+                        id: "studentLoan",
+                        name: "Student Loan"
+                    },
+                    {
+                        id: "carLoan",
+                        name: "Car Loan"
+                    }
                 ]
             },
         ]
     };
+}
+
+export function getLiabilityValues() {
+    return [
+        {
+            id: "mortgage1",
+            value: "42.60"
+        }
+    ]
 }

@@ -4,6 +4,7 @@
     left: 0;
 
     width: 100%;
+    min-height: 100%;
 
     background-image: linear-gradient(rgb(6,80,125), rgb(0,161,234));
 }

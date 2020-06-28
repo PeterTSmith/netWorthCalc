@@ -44,12 +44,12 @@ class BalanceSheet extends React.Component{
 
 const mapStateToProps = (state, ownProps) => {
     if(ownProps.title === 'Assets'){
-        if(state.assets){
-            return { lists: state.assets.lists };
+        if(state.assetsSheet){
+            return { lists: state.assetsSheet.lists };
         }
     }else if(ownProps.title === 'Liabilities'){
-        if(state.liabilities){
-            return { lists: state.liabilities.lists };
+        if(state.liabilitiesSheet){
+            return { lists: state.liabilitiesSheet.lists };
         }
     }
     return {};

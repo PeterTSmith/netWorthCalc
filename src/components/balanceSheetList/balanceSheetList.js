@@ -23,7 +23,7 @@ class BalanceSheetList extends React.Component {
                     <div className="itemRow" key={item.name}>
                         <div className="itemCellName">{item.name}</div>
                         <div className="itemCellContent">
-                            <input className="itemInput"></input>
+                            <input className="itemInput" onChange={ this.enteredValue } value={item.value}></input>
                         </div>
                     </div>
                 );
@@ -37,6 +37,10 @@ class BalanceSheetList extends React.Component {
                 </div>
             );
         });
+    }
+
+    enteredValue(event){
+        console.log(event.target.value);
     }
 }
 
