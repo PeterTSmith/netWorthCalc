@@ -1,5 +1,5 @@
 import React from 'react';
-import BalanceSheet from './components/balanceSheet/balanceSheet';
+import BalanceSheet from '../balanceSheet/balanceSheet';
 
 import './App.css';
 import { connect } from 'react-redux';
