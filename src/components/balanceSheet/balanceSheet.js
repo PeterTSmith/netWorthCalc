@@ -11,16 +11,26 @@ import './balanceSheet.css';
 class BalanceSheet extends React.Component{
     constructor(props) {
         super(props);
+        this.state = {
+            total: 0
+        }
         if(this.props.title === "Assets"){
-            this.props.updateAssetsSheet({listTitle: "Cash and Investments", name: "+++"});
+            this.props.updateAssetsSheet({listTitle: "Cash and Investments", name: "+ee++"});
+            this.props.updateAssetsSheet({listTitle: "Cash and Investments", name: "My New Value"});
+            this.props.updateAssetsSheet({listTitle: "Cash and Investments", name: "My New Value"});
+            this.props.updateAssetsSheet({listTitle: "Cash and Investments", name: "Myeeeee"});
             this.props.updateAssetsSheet({listTitle: "Cash and Investments", name: "My New Value"});
         }else if(this.props.title === "Liabilities"){
-            this.props.updateLiabilitiesSheet({listTitle: "Short Term Liabilities", name: "+++"});
+            this.props.updateLiabilitiesSheet({listTitle: "Short Term Liabilities", name: "++asdf+"});
             this.props.updateLiabilitiesSheet({listTitle: "Short Term Liabilities", name: "My New Value"});
         }
     }
 
     render() {
+        let total = 0;
+        for(let value in this.props.values){
+            total += this.props.values[value];
+        }
         return (
             <div className="balanceSheet">
                 <div className="itemRow titleRow">
@@ -28,7 +38,12 @@ class BalanceSheet extends React.Component{
                 </div>
                 { this.renderSubSheets() }
                 <div className="itemRow">
-                    {"Total " + this.props.title}
+                    <div className="itemCellName">
+                        { "Total " + this.props.title }
+                    </div>
+                    <div className="itemCellContent">
+                        { total }
+                    </div>
                     <div className="doubleLine"></div>
                 </div>
             </div>
@@ -98,8 +113,6 @@ const mapStateToProps = (state, ownProps) => {
         if(state.assetValues){
             stateProps.values = state.assetValues;
         }
-        console.log("ASSET PROPS");
-        console.log(stateProps);
     }else if(ownProps.title === 'Liabilities'){
         if(state.liabilitiesSheet){
             stateProps.lists = state.liabilitiesSheet.lists;
@@ -107,8 +120,6 @@ const mapStateToProps = (state, ownProps) => {
         if(state.liabilityValues){
             stateProps.values = state.liabilityValues;
         }
-        console.log("LIABILITY PROPS");
-        console.log(stateProps);
     }
     return stateProps;
 }
