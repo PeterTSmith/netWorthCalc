@@ -1,5 +1,5 @@
 .balanceSheet {
-    margin-top: 7%;
+    margin-bottom: 7%;
 }
 
 .itemRow {
@@ -13,6 +13,7 @@
 }
 
 .itemRowFinal{
+    margin-bottom: 5%;
     border-bottom: 1px solid black;
 }
 
@@ -23,8 +24,6 @@
 }
 
 .subTitleRow {
-    margin-top: 5%;
-
     border-bottom: 1px solid black;
 }
 

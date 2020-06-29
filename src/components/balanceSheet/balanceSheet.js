@@ -11,9 +11,6 @@ import './balanceSheet.css';
 class BalanceSheet extends React.Component{
     constructor(props) {
         super(props);
-        this.state = {
-            total: 0
-        }
         if(this.props.title === "Assets"){
             this.props.updateAssetsSheet({listTitle: "Cash and Investments", name: "+ee++"});
             this.props.updateAssetsSheet({listTitle: "Cash and Investments", name: "My New Value"});
@@ -27,10 +24,6 @@ class BalanceSheet extends React.Component{
     }
 
     render() {
-        let total = 0;
-        for(let value in this.props.values){
-            total += this.props.values[value];
-        }
         return (
             <div className="balanceSheet">
                 <div className="itemRow titleRow">
@@ -42,7 +35,7 @@ class BalanceSheet extends React.Component{
                         { "Total " + this.props.title }
                     </div>
                     <div className="itemCellContent">
-                        { total }
+                        { this.props.total }
                     </div>
                     <div className="doubleLine"></div>
                 </div>
@@ -77,7 +70,7 @@ class BalanceSheet extends React.Component{
                         <div className="itemRow" key={item.name}>
                             <div className="itemCellName">{item.name}</div>
                             <div className="itemCellContent">
-                                <input className="itemInput" onChange={ (event) => { this.enteredValue(item.id, event.target.value) } } value={item.value}></input>
+                                <input className="itemInput" onChange={ (event) => { this.enteredValue(item.id, event.target.value) } } value={ this.props.values[item.id] }></input>
                             </div>
                         </div>
                     );
@@ -86,7 +79,7 @@ class BalanceSheet extends React.Component{
                     <div className="itemRow itemRowFinal" key={item.name}>
                         <div className="itemCellName">{item.name}</div>
                         <div className="itemCellContent">
-                            <input className="itemInput itemInputFinal" onChange={ (event) => { this.enteredValue(item.id, event.target.value) } } value={item.value}></input>
+                            <input className="itemInput itemInputFinal" onChange={ (event) => { this.enteredValue(item.id, event.target.value) } } value={ this.props.values[item.id] }></input>
                         </div>
                     </div>
                 );
@@ -95,32 +88,34 @@ class BalanceSheet extends React.Component{
     }
 
     enteredValue(id, value) {
-        console.log(id + ", " + value)
         if(this.props.title === 'Assets') {
-            this.props.updateAssetValues({id: id, value: value});
+            this.props.updateAssetValues({id: id, valueChange: { prevVal: this.props.values[id], newVal: parseInt(value)}});
         } else if(this.props.title === 'Liabilities') {
-            this.props.updateLiabilityValues({id: id, value: value});
+            this.props.updateLiabilityValues({id: id, valueChange: { prevVal: this.props.values[id], newVal: parseInt(value)}});
         }
     }
 }
 
 const mapStateToProps = (state, ownProps) => {
     let stateProps = {};
-    if(ownProps.title === 'Assets'){
+    if(ownProps.title === 'Assets') {
         if(state.assetsSheet){
             stateProps.lists = state.assetsSheet.lists;
         }
         if(state.assetValues){
             stateProps.values = state.assetValues;
         }
-    }else if(ownProps.title === 'Liabilities'){
+        stateProps.total = state.totalAssets;
+    } else if(ownProps.title === 'Liabilities') {
         if(state.liabilitiesSheet){
             stateProps.lists = state.liabilitiesSheet.lists;
         }
         if(state.liabilityValues){
             stateProps.values = state.liabilityValues;
         }
+        stateProps.total = state.totalLiabilities;
     }
+    console.log(stateProps);
     return stateProps;
 }
 

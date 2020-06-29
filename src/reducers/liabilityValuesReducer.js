@@ -1,11 +1,14 @@
 export function liabilityValuesReducer(state={}, action) {
     if(action.type === 'UPDATE_LIABILITY_VALUES') {
-        let newState = {...state};
-        if(action.payload.value === ""){
-            newState[action.payload.id] = 0;
-        }else{
-            newState[action.payload.id] = parseInt(action.payload.value);
+        let newVal = action.payload.valueChange.newVal;
+
+        if(isNaN(newVal) || newVal === undefined){
+            newVal = 0;
         }
+
+        let newState = {...state};
+        
+        newState[action.payload.id] = parseInt(newVal);
         return newState;
     } else {
         return state;
