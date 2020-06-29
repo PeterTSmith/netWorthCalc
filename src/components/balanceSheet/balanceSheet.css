@@ -22,8 +22,15 @@
     color: #91bd30;
 }
 
-.totalRow {
+.subTitleRow {
+    margin-top: 5%;
+
     border-bottom: 1px solid black;
+}
+
+.totalRow {
+    
+    color: #91bd30;
 }
 
 .doubleLine {

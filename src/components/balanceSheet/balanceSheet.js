@@ -37,7 +37,7 @@ class BalanceSheet extends React.Component{
                     {this.props.title}
                 </div>
                 { this.renderSubSheets() }
-                <div className="itemRow">
+                <div className="itemRow totalRow">
                     <div className="itemCellName">
                         { "Total " + this.props.title }
                     </div>
@@ -55,7 +55,7 @@ class BalanceSheet extends React.Component{
             return this.props.lists.map((list) => {
                 return (
                     <span key={ list.title }>
-                        <div className="itemRow titleRow">
+                        <div className="itemRow subTitleRow">
                             {list.title}
                         </div>
                         {
