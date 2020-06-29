@@ -73,12 +73,9 @@ export function getAssetsSheet() {
 }
 
 export function getAssetValues() {
-    return [
-        {
-            id: "chequing",
-            value: "55.60"
-        }
-    ]
+    return {
+        chequing: 55.60
+    }
 }
 
 export function getLiabilitiesSheet() {
@@ -136,10 +133,7 @@ export function getLiabilitiesSheet() {
 }
 
 export function getLiabilityValues() {
-    return [
-        {
-            id: "mortgage1",
-            value: "42.60"
-        }
-    ]
+    return {
+        mortgage1: "42.60"
+    }
 }

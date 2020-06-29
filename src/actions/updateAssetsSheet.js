@@ -1,5 +1,6 @@
-export function updateAssetsSheet() {
+export function updateAssetsSheet(newRow) {
     return {
-        type: 'UPDATE_ASSETS_SHEET'
+        type: 'UPDATE_ASSETS_SHEET',
+        payload: newRow
     };
 }

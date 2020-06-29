@@ -1,5 +1,6 @@
-export function updateLiabilitiesSheet() {
+export function updateLiabilitiesSheet(newRow) {
     return {
-        type: 'UPDATE_LIABILITIES_SHEET'
+        type: 'UPDATE_LIABILITIES_SHEET',
+        payload: newRow
     }
 }
