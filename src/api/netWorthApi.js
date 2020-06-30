@@ -33,57 +33,7 @@ export function getTotalAssetValue() {
 //  LIABILITIES SHEET
 
 export function getLiabilitiesSheet() {
-    return {
-        title: "Liabilities",
-        content: [
-            {
-                title: "Short Term Liabilities",
-                fields: [
-                    {
-                        id: "creditCard1",
-                        name: "Credit Card 1"
-                    },
-                    {
-                        id: "creditCard2",
-                        name: "Credit Card 2"
-                    },
-                    {
-                        id: "others",
-                        name: "(others...)"
-                    }
-                ]
-            },
-            {
-                title: "Long Term Debt",
-                fields: [
-                    {
-                        id: "mortgage1",
-                        name: "Mortgage 1"
-                    },
-                    {
-                        id: "mortgage2",
-                        name: "Mortgage 2"
-                    },
-                    {
-                        id: "lineOfCredit",
-                        name: "Line of Credit"
-                    },
-                    {
-                        id: "investmentLoan",
-                        name: "Investment Loan"
-                    },
-                    {
-                        id: "studentLoan",
-                        name: "Student Loan"
-                    },
-                    {
-                        id: "carLoan",
-                        name: "Car Loan"
-                    }
-                ]
-            },
-        ]
-    };
+    return axiosApi.get('/liabilitiesSheet');
 }
 
 export function putLiabilitiesSheetRow(liabilitiesSheetRow) {

@@ -51,9 +51,7 @@ class BalanceSheet extends React.Component{
                         <div className="itemRow subTitleRow">
                             {list.title}
                         </div>
-                        {
-                            this.renderFields(list)
-                        }
+                        { this.renderFields(list) }
                     </span>
                 );
             });
@@ -99,18 +97,18 @@ class BalanceSheet extends React.Component{
 const mapStateToProps = (state, ownProps) => {
     let stateProps = {};
     if(ownProps.title === 'Assets') {
-        if(state.assetsSheet){
+        if(state.assetsSheet) {
             stateProps.lists = state.assetsSheet.content;
         }
-        if(state.assetValues){
+        if(state.assetValues) {
             stateProps.values = state.assetValues;
         }
         stateProps.total = state.totalAssets;
     } else if(ownProps.title === 'Liabilities') {
-        if(state.liabilitiesSheet){
+        if(state.liabilitiesSheet) {
             stateProps.lists = state.liabilitiesSheet.content;
         }
-        if(state.liabilityValues){
+        if(state.liabilityValues) {
             stateProps.values = state.liabilityValues;
         }
         stateProps.total = state.totalLiabilities;
