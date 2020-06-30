@@ -3,10 +3,10 @@
 export function getAssetsSheet() {
     return {
         title: "Assets",
-        lists: [
+        content: [
             {
                 title: "Cash and Investments",
-                items: [
+                fields: [
                     {
                         id: "chequing",
                         name: "Chequing"
@@ -55,7 +55,7 @@ export function getAssetsSheet() {
             },
             {
                 title: "Long Term Assets",
-                items: [
+                fields: [
                     {
                         id: "primaryHome",
                         name: "Primary Home"
@@ -99,10 +99,10 @@ export function getTotalAssetValue() {
 export function getLiabilitiesSheet() {
     return {
         title: "Liabilities",
-        lists: [
+        content: [
             {
                 title: "Short Term Liabilities",
-                items: [
+                fields: [
                     {
                         id: "creditCard1",
                         name: "Credit Card 1"
@@ -119,7 +119,7 @@ export function getLiabilitiesSheet() {
             },
             {
                 title: "Long Term Debt",
-                items: [
+                fields: [
                     {
                         id: "mortgage1",
                         name: "Mortgage 1"

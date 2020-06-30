@@ -13,13 +13,13 @@ export function assetsSheetReducer(state = undefined, action) {
 
         let newState = {
             title: state.title,
-            lists: []
+            content: []
         };
 
-        for(let list of state.lists) {
+        for(let list of state.content) {
             let newList = {
                 title: list.title,
-                items: [...list.items]
+                fields: [...list.fields]
             }
 
             if(list.title === action.payload.listTitle){
@@ -28,10 +28,10 @@ export function assetsSheetReducer(state = undefined, action) {
                     newRow.name = newRow.name + suffix;
                     newRow.id = newRow.id + suffix;
                 }
-                newList.items.push(newRow);
+                newList.fields.push(newRow);
             }
 
-            newState.lists.push(newList);
+            newState.content.push(newList);
         }
 
         return newState;
@@ -78,7 +78,7 @@ function calculateSuffix(newRow, list) {
     let suffix = undefined;
     while(checkMatch) {
         checkMatch = false
-        for(let item of list.items) {
+        for(let item of list.fields) {
             if(
                 (!suffix && item.id === newRow.id)
             ||
