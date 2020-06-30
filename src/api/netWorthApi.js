@@ -1,77 +1,13 @@
+import axios from 'axios';
+
+const axiosApi = axios.create({
+    baseURL: 'http://localhost:8080'
+});
+
 //  ASSETS SHEET
 
 export function getAssetsSheet() {
-    return {
-        title: "Assets",
-        content: [
-            {
-                title: "Cash and Investments",
-                fields: [
-                    {
-                        id: "chequing",
-                        name: "Chequing"
-                    },
-                    {
-                        id: "savingsForTaxes",
-                        name: "Savings for Taxes"
-                    },
-                    {
-                        id: "rainyDayFund",
-                        name: "Rainy Day Fund"
-                    },
-                    {
-                        id: "savingsForFun",
-                        name: "Savings for Fun"
-                    },
-                    {
-                        id: "savingsForTravel",
-                        name: "Savings for Travel"
-                    },
-                    {
-                        id: "savingsForPersonalDevelopment",
-                        name: "Savings for Personal Development"
-                    },
-                    {
-                        id: "investment1",
-                        name: "Investment 1"
-                    },
-                    {
-                        id: "investment2",
-                        name: "Investment 2"
-                    },
-                    {
-                        id: "investment3",
-                        name: "Investment 3"
-                    },
-                    {
-                        id: "investment4",
-                        name: "Investment 4"
-                    },
-                    {
-                        id: "investment5",
-                        name: "Investment 5"
-                    }
-                ]
-            },
-            {
-                title: "Long Term Assets",
-                fields: [
-                    {
-                        id: "primaryHome",
-                        name: "Primary Home"
-                    },
-                    {
-                        id: "secondHome",
-                        name: "Second Home"
-                    },
-                    {
-                        id: "other",
-                        name: "Other"
-                    }
-                ]
-            }
-        ]
-    };
+    return axiosApi.get('/assetsSheet');
 }
 
 export function putAssetsSheetRow(assetsSheetRow) {

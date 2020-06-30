@@ -1,46 +1,63 @@
-import { getAssetsSheet, getAssetValues } from '../api/netWorthApi.js';
+export function assetsSheetReducer(state = {}, action) {
 
-export function assetsSheetReducer(state = undefined, action) {
-    if(!state){
-        let initialState = getAssetsSheet();
+    if(action.type === 'UPDATE_ASSETS_SHEET') {
+        let serverSheet = action.payload.serverSheet;
 
-        return initialState;
-    }
-
-    if(action.type === 'UPDATE_ASSETS_SHEET' && validateNewRow(action.payload.name)) {
-        let newRow = { id: "", name: action.payload.name };
-        newRow.id = calculateId(action.payload.name);
-
-        let newState = {
-            title: state.title,
-            content: []
-        };
-
-        for(let list of state.content) {
-            let newList = {
-                title: list.title,
-                fields: [...list.fields]
-            }
-
-            if(list.title === action.payload.listTitle){
-                let suffix = calculateSuffix(newRow, list)
-                if(suffix){
-                    newRow.name = newRow.name + suffix;
-                    newRow.id = newRow.id + suffix;
-                }
-                newList.fields.push(newRow);
-            }
-
-            newState.content.push(newList);
+        let prevSheet;
+        if(serverSheet.dateModified <= state.dateModified) {
+            prevSheet = state;
+        }else{
+            prevSheet = serverSheet;
         }
 
-        return newState;
-    } else {
-        return state;
+        let validNewField = validateNewField(action.payload.newField);
+
+        if(validNewField
+        || state.dateModified === undefined
+        || serverSheet.dateModified >= state.dateModified) {
+
+            let newState = {
+                title: prevSheet.title,
+                content: [],
+                dateModified: new Date().getTime()
+            };
+    
+            for(let list of prevSheet.content) {
+                let newList = {
+                    title: list.title,
+                    fields: []
+                }
+                for(let field of list.fields){
+                    newList.fields.push({...field});
+                }
+    
+                if(validNewField && list.title === action.payload.newField.listTitle){
+                    let newRow = { id: "", name: action.payload.newField.name };
+                    newRow.id = calculateId(action.payload.newField.name);
+                    let suffix = calculateSuffix(newRow, list)
+                    if(suffix){
+                        newRow.name = newRow.name + suffix;
+                        newRow.id = newRow.id + suffix;
+                    }
+                    newList.fields.push(newRow);
+                }
+    
+                newState.content.push(newList);
+            }
+
+            return newState;
+        }else{
+            return state;
+        }
     }
+    return state;
 };
 
-function validateNewRow(name) {
+function validateNewField(newField) {
+    if(!newField){
+        return false;
+    }
+    let name = newField.name;
     for(let i = 0; i < name.length; i++){
         if(!(
             (name[i].charCodeAt(0) === 32)

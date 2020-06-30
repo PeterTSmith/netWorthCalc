@@ -115,7 +115,6 @@ const mapStateToProps = (state, ownProps) => {
         }
         stateProps.total = state.totalLiabilities;
     }
-    console.log(stateProps);
     return stateProps;
 }
 
