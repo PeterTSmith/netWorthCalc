@@ -1,5 +1,12 @@
 import React from 'react';
 import BalanceSheet from '../balanceSheet/balanceSheet';
+import { retrieveAssetValues } from '../../actions/retrieveAssetValues.js';
+import { retrieveAssetsSheet } from '../../actions/retrieveAssetsSheet.js';
+import { retrieveTotalAssetValue } from '../../actions/retrieveTotalAssetValue.js';
+import { retrieveLiabilityValues } from '../../actions/retrieveLiabilityValues.js';
+import { retrieveLiabilitiesSheet } from '../../actions/retrieveLiabilitiesSheet.js';
+import { retrieveTotalLiabilityValue } from '../../actions/retrieveTotalLiabilityValue.js';
+import { retrieveNetWorthValue } from '../../actions/retrieveNetWorthValue.js';
 
 import './App.css';
 import { connect } from 'react-redux';
@@ -7,6 +14,16 @@ import { connect } from 'react-redux';
 class App extends React.Component {
     constructor(props){
         super(props);
+
+        this.props.retrieveAssetsSheet();
+        this.props.retrieveAssetValues();
+        this.props.retrieveTotalAssetValue();
+
+        this.props.retrieveLiabilitiesSheet();
+        this.props.retrieveLiabilityValues();
+        this.props.retrieveTotalLiabilityValue();
+
+        this.props.retrieveNetWorthValue();
     }
 
     render() {
@@ -42,4 +59,12 @@ const mapStateToProps = function(state, ownProps){
     return stateProps;
 }
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, {
+    retrieveAssetValues,
+    retrieveAssetsSheet,
+    retrieveTotalAssetValue,
+    retrieveLiabilityValues,
+    retrieveLiabilitiesSheet,
+    retrieveTotalLiabilityValue,
+    retrieveNetWorthValue
+})(App);

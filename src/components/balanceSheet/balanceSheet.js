@@ -87,9 +87,9 @@ class BalanceSheet extends React.Component{
 
     enteredValue(id, value) {
         if(this.props.title === 'Assets') {
-            this.props.updateAssetValues({id: id, valueChange: { prevVal: this.props.values[id], newVal: parseInt(value)}});
+            this.props.updateAssetValues({id: id, valueChange: { prevVal: this.props.values[id], newVal: parseInt(value)}, dateModified: new Date().getTime()});
         } else if(this.props.title === 'Liabilities') {
-            this.props.updateLiabilityValues({id: id, valueChange: { prevVal: this.props.values[id], newVal: parseInt(value)}});
+            this.props.updateLiabilityValues({id: id, valueChange: { prevVal: this.props.values[id], newVal: parseInt(value)}, dateModified: new Date().getTime()});
         }
     }
 }
@@ -101,7 +101,10 @@ const mapStateToProps = (state, ownProps) => {
             stateProps.lists = state.assetsSheet.content;
         }
         if(state.assetValues) {
-            stateProps.values = state.assetValues;
+            stateProps.values = {};
+            for(let fieldValue of state.assetValues) {
+                stateProps.values[fieldValue.id] = fieldValue.value;
+            }
         }
         stateProps.total = state.totalAssets;
     } else if(ownProps.title === 'Liabilities') {
@@ -109,11 +112,19 @@ const mapStateToProps = (state, ownProps) => {
             stateProps.lists = state.liabilitiesSheet.content;
         }
         if(state.liabilityValues) {
-            stateProps.values = state.liabilityValues;
+            stateProps.values = {};
+            for(let fieldValue of state.liabilityValues) {
+                stateProps.values[fieldValue.id] = fieldValue.value;
+            }
         }
         stateProps.total = state.totalLiabilities;
     }
     return stateProps;
 }
 
-export default connect(mapStateToProps, { updateAssetsSheet, updateAssetValues, updateLiabilitiesSheet, updateLiabilityValues })(BalanceSheet);
+export default connect(mapStateToProps, {
+    updateAssetsSheet,
+    updateAssetValues,
+    updateLiabilitiesSheet,
+    updateLiabilityValues
+})(BalanceSheet);

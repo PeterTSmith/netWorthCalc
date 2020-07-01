@@ -1,27 +1,26 @@
-export function assetsSheetReducer(state = {}, action) {
+export function assetsSheetReducer(state = undefined, action) {
+
+    if(state === undefined) {
+        state = {
+            title: "",
+            content: [],
+            dateModified: new Date().getTime()
+        }
+    }
 
     if(action.type === 'UPDATE_ASSETS_SHEET') {
-        let serverSheet = action.payload.serverSheet;
-
-        let prevSheet;
-        if(serverSheet.dateModified <= state.dateModified) {
-            prevSheet = state;
-        }else{
-            prevSheet = serverSheet;
-        }
+        let prevSheet = state;
 
         let validNewField = validateNewField(action.payload.newField);
 
-        if(validNewField
-        || state.dateModified === undefined
-        || serverSheet.dateModified >= state.dateModified) {
-
+        if(validNewField) {
             let newState = {
                 title: prevSheet.title,
                 content: [],
                 dateModified: new Date().getTime()
             };
     
+            let newFieldEntered = false;
             for(let list of prevSheet.content) {
                 let newList = {
                     title: list.title,
@@ -31,7 +30,7 @@ export function assetsSheetReducer(state = {}, action) {
                     newList.fields.push({...field});
                 }
     
-                if(validNewField && list.title === action.payload.newField.listTitle){
+                if(list.title === action.payload.newField.listTitle){
                     let newRow = { id: "", name: action.payload.newField.name };
                     newRow.id = calculateId(action.payload.newField.name);
                     let suffix = calculateSuffix(newRow, list)
@@ -40,8 +39,23 @@ export function assetsSheetReducer(state = {}, action) {
                         newRow.id = newRow.id + suffix;
                     }
                     newList.fields.push(newRow);
+                    newFieldEntered = true;
                 }
     
+                newState.content.push(newList);
+            }
+
+            if(!newFieldEntered) {
+                let newList = {
+                    title: action.payload.newField.listTitle,
+                    fields: []
+                }
+
+                newList.fields.push({
+                    id: calculateId(action.payload.newField.name),
+                    name: action.payload.newField.name
+                });
+
                 newState.content.push(newList);
             }
 
@@ -49,6 +63,8 @@ export function assetsSheetReducer(state = {}, action) {
         }else{
             return state;
         }
+    } else if(action.type === 'RETRIEVE_ASSETS_SHEET') {
+        return action.payload.serverSheet;
     }
     return state;
 };

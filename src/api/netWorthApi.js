@@ -10,24 +10,22 @@ export function getAssetsSheet() {
     return axiosApi.get('/assetsSheet');
 }
 
-export function putAssetsSheetRow(assetsSheetRow) {
-    console.log("Sent new assets sheet row to server!");
+export function postAssetsSheetRow(assetsSheetField) {
+    axiosApi.post("/assetsSheet", assetsSheetField)
 }
 
 //  ASSET VALUES
 
 export function getAssetValues() {
-    return {
-        chequing: 55.60
-    }
+    return axiosApi.get('/assetValues');
 }
 
-export function putAssetValues(assetValues) {
-    console.log("Sent new asset values to server!");
+export function postAssetValues(assetValues) {
+    axiosApi.post("/assetValues", assetValues);
 }
 
 export function getTotalAssetValue() {
-    return -1;
+    return axiosApi.get("/totalAssetValue");
 }
 
 //  LIABILITIES SHEET
@@ -36,28 +34,26 @@ export function getLiabilitiesSheet() {
     return axiosApi.get('/liabilitiesSheet');
 }
 
-export function putLiabilitiesSheetRow(liabilitiesSheetRow) {
-    console.log("Sent new liabilities sheet row to server!");
+export function postLiabilitiesSheetRow(liabilitiesSheetField) {
+    axiosApi.post("/liabilitiesSheet", liabilitiesSheetField);
 }
 
 //  LIABILITY VALUES
 
 export function getLiabilityValues() {
-    return {
-        mortgage1: "42.60"
-    }
+    return axiosApi.get("/liabilityValues");
 }
 
-export function putLiabilityValues(liabilityValues) {
-    console.log("Sent new liability values to server!");
+export function postLiabilityValues(liabilityValues) {
+    axiosApi.post("/liabilityValues", liabilityValues);
 }
 
 export function getTotalLiabilityValue() {
-    return -1;
+    return axiosApi.get("/totalLiabilityValue");
 }
 
 //  NET WORTH VALUES
 
 export function getNetWorthValue() {
-    return -1;
+    return axiosApi.get("/netWorthValue");
 }
