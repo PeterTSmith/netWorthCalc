@@ -11,16 +11,6 @@ import './balanceSheet.css';
 class BalanceSheet extends React.Component{
     constructor(props) {
         super(props);
-        if(this.props.title === "Assets"){
-            this.props.updateAssetsSheet({listTitle: "Cash and Investments", name: "+ee++"});
-            this.props.updateAssetsSheet({listTitle: "Cash and Investments", name: "My New Value"});
-            this.props.updateAssetsSheet({listTitle: "Cash and Investments", name: "My New Value"});
-            this.props.updateAssetsSheet({listTitle: "Cash and Investments", name: "Myeeeee"});
-            this.props.updateAssetsSheet({listTitle: "Cash and Investments", name: "My New Value"});
-        }else if(this.props.title === "Liabilities"){
-            this.props.updateLiabilitiesSheet({listTitle: "Short Term Liabilities", name: "++asdf+"});
-            this.props.updateLiabilitiesSheet({listTitle: "Short Term Liabilities", name: "My New Value"});
-        }
     }
 
     render() {
@@ -103,7 +93,7 @@ const mapStateToProps = (state, ownProps) => {
         if(state.assetValues) {
             stateProps.values = {};
             for(let fieldValue of state.assetValues) {
-                stateProps.values[fieldValue.id] = fieldValue.value;
+                stateProps.values[fieldValue.fieldId] = fieldValue.value;
             }
         }
         stateProps.total = state.totalAssets;
@@ -114,7 +104,7 @@ const mapStateToProps = (state, ownProps) => {
         if(state.liabilityValues) {
             stateProps.values = {};
             for(let fieldValue of state.liabilityValues) {
-                stateProps.values[fieldValue.id] = fieldValue.value;
+                stateProps.values[fieldValue.fieldId] = fieldValue.value;
             }
         }
         stateProps.total = state.totalLiabilities;

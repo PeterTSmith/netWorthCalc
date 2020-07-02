@@ -17,7 +17,7 @@ export function postAssetsSheetRow(assetsSheetField) {
 //  ASSET VALUES
 
 export function getAssetValues() {
-    return axiosApi.get('/assetValues');
+    return axiosApi.get('/assetValues?docId=0');
 }
 
 export function postAssetValues(assetValues) {
@@ -25,7 +25,7 @@ export function postAssetValues(assetValues) {
 }
 
 export function getTotalAssetValue() {
-    return axiosApi.get("/totalAssetValue");
+    return axiosApi.get("/totalAssetValue?docId=0");
 }
 
 //  LIABILITIES SHEET
@@ -41,7 +41,7 @@ export function postLiabilitiesSheetRow(liabilitiesSheetField) {
 //  LIABILITY VALUES
 
 export function getLiabilityValues() {
-    return axiosApi.get("/liabilityValues");
+    return axiosApi.get("/liabilityValues?docId=0");
 }
 
 export function postLiabilityValues(liabilityValues) {
@@ -49,11 +49,11 @@ export function postLiabilityValues(liabilityValues) {
 }
 
 export function getTotalLiabilityValue() {
-    return axiosApi.get("/totalLiabilityValue");
+    return axiosApi.get("/totalLiabilityValue?docId=0");
 }
 
 //  NET WORTH VALUES
 
 export function getNetWorthValue() {
-    return axiosApi.get("/netWorthValue");
+    return axiosApi.get("/netWorthValue?docId=0");
 }

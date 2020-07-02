@@ -13,14 +13,17 @@ export function assetValuesReducer(state=[], action) {
         }
 
         let inputItem = {
-            id: action.payload.valueUpdate.id,
+            docId: 0,
+            fieldId: action.payload.valueUpdate.id,
             value: inputVal,
+            isAsset: true,
+            isLiability: false,
             dateModified: new Date().getTime()
         };
 
         let hit = false;
         for(let newItemIndex in newState) {
-            if(newState[newItemIndex].id === inputItem.id) {
+            if(newState[newItemIndex].fieldId === inputItem.fieldId) {
                 newState[newItemIndex] = inputItem;
                 hit = true;
             }
