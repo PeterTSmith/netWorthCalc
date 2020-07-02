@@ -1,8 +1,8 @@
 import { getTotalAssetValue } from '../api/netWorthApi.js';
 
-export function retrieveTotalAssetValue () {
+export function retrieveTotalAssetValue(activeDocId) {
     return async function(deploy) {
-        let req = await getTotalAssetValue();
+        let req = await getTotalAssetValue(activeDocId);
 
         deploy({
             type: 'RETRIEVE_TOTAL_ASSET_VALUE',

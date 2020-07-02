@@ -2,11 +2,14 @@ import { postLiabilityValues } from '../api/netWorthApi.js';
 
 export function updateLiabilityValues(valueUpdate) {
     return async function(deploy) {
-        await postLiabilityValues({
-            id: valueUpdate.id,
+        let newValue = {
+            docId: 0,
+            fieldId: valueUpdate.id,
             value: valueUpdate.valueChange.newVal,
-            dateModified: valueUpdate.dateModified
-        });
+            valueType: "liability",
+            dateModified: new Date().getTime()
+        };
+        await postLiabilityValues(newValue);
 
         deploy({
             type: 'UPDATE_LIABILITY_VALUES',

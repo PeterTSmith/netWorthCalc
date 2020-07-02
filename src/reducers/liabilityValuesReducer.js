@@ -16,8 +16,7 @@ export function liabilityValuesReducer(state=[], action) {
             docId: 0,
             fieldId: action.payload.valueUpdate.id,
             value: inputVal,
-            isAsset: false,
-            isLiability: true,
+            valueType: "liability",
             dateModified: new Date().getTime()
         };
 

@@ -16,8 +16,7 @@ export function assetValuesReducer(state=[], action) {
             docId: 0,
             fieldId: action.payload.valueUpdate.id,
             value: inputVal,
-            isAsset: true,
-            isLiability: false,
+            valueType: "asset",
             dateModified: new Date().getTime()
         };
 
@@ -34,6 +33,8 @@ export function assetValuesReducer(state=[], action) {
 
         return newState;
     } else if(action.type === 'RETRIEVE_ASSET_VALUES') {
+        console.log("RETRIEVE_ASSET_VALUES");
+        console.log(action.payload.serverValues);
         return action.payload.serverValues;
     } else {
         return state;

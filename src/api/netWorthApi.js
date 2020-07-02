@@ -6,7 +6,7 @@ const axiosApi = axios.create({
 
 //  ASSETS SHEET
 
-export function getAssetsSheet() {
+export function getAssetsSheet(docId) {
     return axiosApi.get('/assetsSheet');
 }
 
@@ -16,21 +16,21 @@ export function postAssetsSheetRow(assetsSheetField) {
 
 //  ASSET VALUES
 
-export function getAssetValues() {
-    return axiosApi.get('/assetValues?docId=0');
+export function getAssetValues(docId) {
+    return axiosApi.get('/assetValues?docId=' + docId);
 }
 
 export function postAssetValues(assetValues) {
     axiosApi.post("/assetValues", assetValues);
 }
 
-export function getTotalAssetValue() {
-    return axiosApi.get("/totalAssetValue?docId=0");
+export function getTotalAssetValue(docId) {
+    return axiosApi.get("/totalAssetValue?docId=" + docId);
 }
 
 //  LIABILITIES SHEET
 
-export function getLiabilitiesSheet() {
+export function getLiabilitiesSheet(docId) {
     return axiosApi.get('/liabilitiesSheet');
 }
 
@@ -40,20 +40,20 @@ export function postLiabilitiesSheetRow(liabilitiesSheetField) {
 
 //  LIABILITY VALUES
 
-export function getLiabilityValues() {
-    return axiosApi.get("/liabilityValues?docId=0");
+export function getLiabilityValues(docId) {
+    return axiosApi.get("/liabilityValues?docId=" + docId);
 }
 
 export function postLiabilityValues(liabilityValues) {
     axiosApi.post("/liabilityValues", liabilityValues);
 }
 
-export function getTotalLiabilityValue() {
-    return axiosApi.get("/totalLiabilityValue?docId=0");
+export function getTotalLiabilityValue(docId) {
+    return axiosApi.get("/totalLiabilityValue?docId=" + docId);
 }
 
 //  NET WORTH VALUES
 
-export function getNetWorthValue() {
-    return axiosApi.get("/netWorthValue?docId=0");
+export function getNetWorthValue(docId) {
+    return axiosApi.get("/netWorthValue?docId=" + docId);
 }

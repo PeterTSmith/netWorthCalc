@@ -1,8 +1,8 @@
 import { getAssetsSheet } from '../api/netWorthApi.js';
 
-export function retrieveAssetsSheet(newField) {
+export function retrieveAssetsSheet(activeDocId) {
     return async function(deploy){
-        let req = await getAssetsSheet();
+        let req = await getAssetsSheet(activeDocId);
 
         deploy({
             type: 'RETRIEVE_ASSETS_SHEET',

@@ -6,8 +6,10 @@ import { liabilitiesSheetReducer } from './liabilitiesSheetReducer.js';
 import { liabilityValuesReducer } from './liabilityValuesReducer.js';
 import { totalLiabilitiesReducer } from './totalLiabilitiesReducer.js';
 import { netWorthReducer } from './netWorthReducer.js';
+import { activeDocIdReducer } from './activeDocIdReducer.js';
 
 export default combineReducers({
+    activeDocId: activeDocIdReducer,
     assetsSheet: assetsSheetReducer,
     assetValues: assetValuesReducer,
     totalAssets: totalAssetsReducer,
