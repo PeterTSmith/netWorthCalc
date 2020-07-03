@@ -20,8 +20,8 @@ export function getAssetValues(docId) {
     return axiosApi.get('/assetValues?docId=' + docId);
 }
 
-export function postAssetValues(assetValues) {
-    axiosApi.post("/assetValues", assetValues);
+export function postAssetValues(docId, assetValues) {
+    axiosApi.post("/assetValues?docId=" + docId, assetValues);
 }
 
 export function getTotalAssetValue(docId) {
@@ -44,8 +44,8 @@ export function getLiabilityValues(docId) {
     return axiosApi.get("/liabilityValues?docId=" + docId);
 }
 
-export function postLiabilityValues(liabilityValues) {
-    axiosApi.post("/liabilityValues", liabilityValues);
+export function postLiabilityValues(docId, liabilityValues) {
+    axiosApi.post("/liabilityValues?docId=" + docId, liabilityValues);
 }
 
 export function getTotalLiabilityValue(docId) {

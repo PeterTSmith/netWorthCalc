@@ -1,15 +1,15 @@
 import { postAssetValues } from '../api/netWorthApi.js';
 
-export function updateAssetValues(valueUpdate) {
+export function updateAssetValues(docId, valueUpdate) {
     return async function(deploy) {
         let newValue = {
-            docId: 0,
+            docId: docId,
             fieldId: valueUpdate.id,
             value: valueUpdate.valueChange.newVal,
             valueType: "asset",
             dateModified: new Date().getTime()
         };
-        await postAssetValues(newValue);
+        await postAssetValues(docId, newValue);
 
         deploy({
             type: 'UPDATE_ASSET_VALUES',

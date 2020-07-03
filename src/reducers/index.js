@@ -7,6 +7,7 @@ import { liabilityValuesReducer } from './liabilityValuesReducer.js';
 import { totalLiabilitiesReducer } from './totalLiabilitiesReducer.js';
 import { netWorthReducer } from './netWorthReducer.js';
 import { activeDocIdReducer } from './activeDocIdReducer.js';
+import { updateActiveDocId } from '../actions/updateActiveDocId.js';
 
 export default combineReducers({
     activeDocId: activeDocIdReducer,
@@ -16,5 +17,5 @@ export default combineReducers({
     liabilitiesSheet: liabilitiesSheetReducer,
     liabilityValues: liabilityValuesReducer,
     totalLiabilities: totalLiabilitiesReducer,
-    netWorth: netWorthReducer 
+    netWorth: netWorthReducer
 });

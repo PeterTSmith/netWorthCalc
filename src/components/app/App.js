@@ -16,7 +16,7 @@ class App extends React.Component {
     constructor(props){
         super(props);
 
-        this.props.updateActiveDocId(1);
+        this.props.updateActiveDocId(0);
 
         this.props.retrieveAssetsSheet(this.props.activeDocId);
         this.props.retrieveAssetValues(this.props.activeDocId);
@@ -33,15 +33,15 @@ class App extends React.Component {
 
         this.props.updateActiveDocId(1);
 
-        this.props.retrieveAssetsSheet(this.props.activeDocId);
-        this.props.retrieveAssetValues(this.props.activeDocId);
-        this.props.retrieveTotalAssetValue(this.props.activeDocId);
+        this.props.retrieveAssetsSheet(1);
+        this.props.retrieveAssetValues(1);
+        this.props.retrieveTotalAssetValue(1);
 
-        this.props.retrieveLiabilitiesSheet(this.props.activeDocId);
-        this.props.retrieveLiabilityValues(this.props.activeDocId);
-        this.props.retrieveTotalLiabilityValue(this.props.activeDocId);
+        this.props.retrieveLiabilitiesSheet(1);
+        this.props.retrieveLiabilityValues(1);
+        this.props.retrieveTotalLiabilityValue(1);
 
-        this.props.retrieveNetWorthValue(this.props.activeDocId);
+        this.props.retrieveNetWorthValue(1);
 
     }
 

@@ -77,9 +77,9 @@ class BalanceSheet extends React.Component{
 
     enteredValue(id, value) {
         if(this.props.title === 'Assets') {
-            this.props.updateAssetValues({id: id, valueChange: { prevVal: this.props.values[id], newVal: parseInt(value)}, dateModified: new Date().getTime()});
+            this.props.updateAssetValues(this.props.docId, {id: id, valueChange: { prevVal: this.props.values[id], newVal: parseInt(value)}, dateModified: new Date().getTime()});
         } else if(this.props.title === 'Liabilities') {
-            this.props.updateLiabilityValues({id: id, valueChange: { prevVal: this.props.values[id], newVal: parseInt(value)}, dateModified: new Date().getTime()});
+            this.props.updateLiabilityValues(this.props.docId, {id: id, valueChange: { prevVal: this.props.values[id], newVal: parseInt(value)}, dateModified: new Date().getTime()});
         }
     }
 }
@@ -108,6 +108,14 @@ const mapStateToProps = (state, ownProps) => {
             }
         }
         stateProps.total = state.totalLiabilities;
+    }
+    stateProps.docId = state.activeDocId;
+    for(let list of stateProps.lists) {
+        for(let field of list.fields) {
+            if(stateProps.values[field.id] === undefined){
+                stateProps.values[field.id] = 0;
+            }
+        }
     }
     return stateProps;
 }
