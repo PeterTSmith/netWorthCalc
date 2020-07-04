@@ -77,7 +77,7 @@ class BalanceSheet extends React.Component{
 
     enteredValue(id, value) {
         if(this.props.title === 'Assets') {
-            this.props.updateAssetValues(this.props.docId, {id: id, valueChange: { prevVal: this.props.values[id], newVal: parseInt(value)}, dateModified: new Date().getTime()});
+            this.props.updateAssetValues(this.props.docId, { id: id, valueChange: { prevVal: this.props.values[id], newVal: parseInt(value) }, dateModified: new Date().getTime() });
         } else if(this.props.title === 'Liabilities') {
             this.props.updateLiabilityValues(this.props.docId, {id: id, valueChange: { prevVal: this.props.values[id], newVal: parseInt(value)}, dateModified: new Date().getTime()});
         }

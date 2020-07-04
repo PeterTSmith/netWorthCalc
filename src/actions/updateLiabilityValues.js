@@ -7,7 +7,7 @@ export function updateLiabilityValues(docId, valueUpdate) {
             fieldId: valueUpdate.id,
             value: valueUpdate.valueChange.newVal,
             valueType: "liability",
-            dateModified: new Date().getTime()
+            dateModified: valueUpdate.dateModified
         };
         await postLiabilityValues(docId, newValue);
 

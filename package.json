@@ -17,7 +17,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest",
+    "test:watch": "npm test -- --watch",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -33,6 +34,17 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "fetch-mock": "^9.10.3",
+    "node-fetch": "^2.6.0",
+    "redux-mock-store": "^1.5.4",
+    "regenerator-runtime": "^0.13.5"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
     ]
   }
 }

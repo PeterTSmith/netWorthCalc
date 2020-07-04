@@ -7,7 +7,7 @@ export function updateAssetValues(docId, valueUpdate) {
             fieldId: valueUpdate.id,
             value: valueUpdate.valueChange.newVal,
             valueType: "asset",
-            dateModified: new Date().getTime()
+            dateModified: valueUpdate.dateModified
         };
         await postAssetValues(docId, newValue);
 

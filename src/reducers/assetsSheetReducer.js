@@ -11,7 +11,7 @@ export function assetsSheetReducer(state = undefined, action) {
     if(action.type === 'UPDATE_ASSETS_SHEET') {
         let prevSheet = state;
 
-        let validNewField = validateNewField(action.payload.newField);
+        let validNewField = validateNewField(action.payload);
 
         if(validNewField) {
             let newState = {
@@ -30,9 +30,9 @@ export function assetsSheetReducer(state = undefined, action) {
                     newList.fields.push({...field});
                 }
     
-                if(list.title === action.payload.newField.listTitle){
-                    let newRow = { id: "", name: action.payload.newField.name };
-                    newRow.id = calculateId(action.payload.newField.name);
+                if(list.title === action.payload.listTitle){
+                    let newRow = { id: "", name: action.payload.name };
+                    newRow.id = calculateId(action.payload.name);
                     let suffix = calculateSuffix(newRow, list)
                     if(suffix){
                         newRow.name = newRow.name + suffix;
@@ -47,13 +47,13 @@ export function assetsSheetReducer(state = undefined, action) {
 
             if(!newFieldEntered) {
                 let newList = {
-                    title: action.payload.newField.listTitle,
+                    title: action.payload.listTitle,
                     fields: []
                 }
 
                 newList.fields.push({
-                    id: calculateId(action.payload.newField.name),
-                    name: action.payload.newField.name
+                    id: calculateId(action.payload.name),
+                    name: action.payload.name
                 });
 
                 newState.content.push(newList);
