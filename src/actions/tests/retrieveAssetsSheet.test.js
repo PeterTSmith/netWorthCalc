@@ -3,7 +3,7 @@ import thunk from 'redux-thunk'
 import axios from 'axios';
 import regeneratorRuntime from 'regenerator-runtime';
 
-import { retrieveAssetsSheet } from './retrieveAssetsSheet.js';
+import { retrieveAssetsSheet } from '../retrieveAssetsSheet.js';
 
 const middleware = [thunk];
 const mockStore = configureMockStore(middleware);

@@ -3,8 +3,8 @@ import thunk from 'redux-thunk'
 import axios from 'axios';
 import regeneratorRuntime from 'regenerator-runtime';
 
-import { retrieveTotalAssetValue } from './retrieveTotalAssetValue.js';
-import axiosApi from '../api/netWorthApi.js';
+import { retrieveTotalAssetValue } from '../retrieveTotalAssetValue.js';
+import axiosApi from '../../api/netWorthApi.js';
 
 const middleware = [thunk];
 const mockStore = configureMockStore(middleware);

@@ -1,74 +1,74 @@
-import { updateAssetsSheet } from "./updateAssetsSheet.js"
+import { updateLiabilitiesSheet } from "../updateLiabilitiesSheet.js"
 
-describe('updateAssetsSheet: Empty name', () => {
+describe('updateLiabilitiesSheet: Empty name', () => {
     it('should return a valid balanceSheetField', () => {
         let expectedAction = {
-            type: 'UPDATE_ASSETS_SHEET',
+            type: 'UPDATE_LIABILITIES_SHEET',
             payload: {
                 listTitle: "Cash and Investments", name: ""
             }
         };
-        expect(updateAssetsSheet({
+        expect(updateLiabilitiesSheet({
             listTitle: "Cash and Investments",
             name: ""
         })).toEqual(expectedAction);
     })
 });
 
-describe('updateAssetsSheet: Empty listTitle', () => {
+describe('updateLiabilitiesSheet: Empty listTitle', () => {
     it('should return a valid balanceSheetField', () => {
         let expectedAction = {
-            type: 'UPDATE_ASSETS_SHEET',
+            type: 'UPDATE_LIABILITIES_SHEET',
             payload: {
                 listTitle: "", name: "My New Value"
             }
         };
-        expect(updateAssetsSheet({
+        expect(updateLiabilitiesSheet({
             listTitle: "",
             name: "My New Value"
         })).toEqual(expectedAction);
     })
 });
 
-describe('updateAssetsSheet: Empty listTitle, Empty name', () => {
+describe('updateLiabilitiesSheet: Empty listTitle, Empty name', () => {
     it('should return a valid balanceSheetField', () => {
         let expectedAction = {
-            type: 'UPDATE_ASSETS_SHEET',
+            type: 'UPDATE_LIABILITIES_SHEET',
             payload: {
                 listTitle: "", name: ""
             }
         };
-        expect(updateAssetsSheet({
+        expect(updateLiabilitiesSheet({
             listTitle: "",
             name: ""
         })).toEqual(expectedAction);
     })
 });
 
-describe('updateAssetsSheet: Valid Field', () => {
+describe('updateLiabilitiesSheet: Valid Field', () => {
     it('should return a valid balanceSheetField', () => {
         let expectedAction = {
-            type: 'UPDATE_ASSETS_SHEET',
+            type: 'UPDATE_LIABILITIES_SHEET',
             payload: {
                 listTitle: "Cash and Investments", name: "My New Value"
             }
         };
-        expect(updateAssetsSheet({
+        expect(updateLiabilitiesSheet({
             listTitle: "Cash and Investments",
             name: "My New Value"
         })).toEqual(expectedAction);
     })
 });
 
-describe('updateAssetsSheet: Invalid Field', () => {
+describe('updateLiabilitiesSheet: Invalid Field', () => {
     it('should return a valid balanceSheetField', () => {
         let expectedAction = {
-            type: 'UPDATE_ASSETS_SHEET',
+            type: 'UPDATE_LIABILITIES_SHEET',
             payload: {
                 listTitle: "Cash and Investments", name: "My New Value"
             }
         };
-        expect(updateAssetsSheet({
+        expect(updateLiabilitiesSheet({
             listTitle: "Cash and Investments",
             name: "My New Value"
         })).toEqual(expectedAction);

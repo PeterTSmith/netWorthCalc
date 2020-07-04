@@ -3,7 +3,7 @@ import thunk from 'redux-thunk'
 import axios from 'axios';
 import regeneratorRuntime from 'regenerator-runtime';
 
-import { updateLiabilityValues } from '../actions/updateLiabilityValues.js';
+import { updateLiabilityValues } from '../updateLiabilityValues.js';
 
 const middleware = [thunk];
 const mockStore = configureMockStore(middleware);

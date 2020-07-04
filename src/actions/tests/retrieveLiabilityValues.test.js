@@ -3,26 +3,26 @@ import thunk from 'redux-thunk'
 import axios from 'axios';
 import regeneratorRuntime from 'regenerator-runtime';
 
-import { retrieveAssetValues } from './retrieveAssetValues.js';
-import axiosApi from '../api/netWorthApi.js';
+import { retrieveLiabilityValues } from '../retrieveLiabilityValues.js';
+import axiosApi from '../../api/netWorthApi.js';
 
 const middleware = [thunk];
 const mockStore = configureMockStore(middleware);
 
 jest.mock('axios');
 
-describe('retrieveAssetValues: no assetValues', () => {
-    it('should return the expected assetValues', () => {
+describe('retrieveLiabilityValues: no liabilityValues', () => {
+    it('should return the expected liabilityValues', () => {
         axios.get.mockResolvedValue({'data': [
 
         ]});
 
         const store = mockStore({});
 
-        return store.dispatch(retrieveAssetValues(0)).then(() => {
+        return store.dispatch(retrieveLiabilityValues(0)).then(() => {
             expect(store.getActions()).toEqual([
                 {
-                    type: 'RETRIEVE_ASSET_VALUES',
+                    type: 'RETRIEVE_LIABILITY_VALUES',
                     payload: {
                         serverValues: []
                     }
@@ -32,59 +32,59 @@ describe('retrieveAssetValues: no assetValues', () => {
     })
 });
 
-describe('retrieveAssetValues: multiple values', () => {
-    it('should return the expected assetValues', () => {
+describe('retrieveLiabilityValues: multiple values', () => {
+    it('should return the expected liabilityValues', () => {
         axios.get.mockResolvedValue({'data': [
             {
                 docId: 0,
                 fieldId: 0,
                 value: 0,
-                valueType: "asset",
+                valueType: "liability",
                 dateModified: 0
             },
             {
                 docId: 0,
                 fieldId: 1,
                 value: 56,
-                valueType: "asset",
+                valueType: "liability",
                 dateModified: 0
             },
             {
                 docId: 0,
                 fieldId: 33,
                 value: 31893,
-                valueType: "asset",
+                valueType: "liability",
                 dateModified: 0
             }
         ]});
 
         const store = mockStore({});
 
-        return store.dispatch(retrieveAssetValues(0)).then(() => {
+        return store.dispatch(retrieveLiabilityValues(0)).then(() => {
             expect(store.getActions()).toEqual([
                 {
-                    type: 'RETRIEVE_ASSET_VALUES',
+                    type: 'RETRIEVE_LIABILITY_VALUES',
                     payload: {
                         serverValues: [
                             {
                                 docId: 0,
                                 fieldId: 0,
                                 value: 0,
-                                valueType: "asset",
+                                valueType: "liability",
                                 dateModified: 0
                             },
                             {
                                 docId: 0,
                                 fieldId: 1,
                                 value: 56,
-                                valueType: "asset",
+                                valueType: "liability",
                                 dateModified: 0
                             },
                             {
                                 docId: 0,
                                 fieldId: 33,
                                 value: 31893,
-                                valueType: "asset",
+                                valueType: "liability",
                                 dateModified: 0
                             }
                         ]

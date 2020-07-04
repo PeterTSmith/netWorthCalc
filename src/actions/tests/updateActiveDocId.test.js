@@ -1,4 +1,4 @@
-import { updateActiveDocId } from './updateActiveDocId.js';
+import { updateActiveDocId } from '../updateActiveDocId.js';
 
 describe('updateActiveDocId: payload = 0', () => {
     it('should return a valid docId', () => {

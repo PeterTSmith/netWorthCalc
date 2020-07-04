@@ -3,7 +3,7 @@ import thunk from 'redux-thunk'
 import axios from 'axios';
 import regeneratorRuntime from 'regenerator-runtime';
 
-import { updateAssetValues } from '../actions/updateAssetValues.js';
+import { updateAssetValues } from '../updateAssetValues.js';
 
 const middleware = [thunk];
 const mockStore = configureMockStore(middleware);
