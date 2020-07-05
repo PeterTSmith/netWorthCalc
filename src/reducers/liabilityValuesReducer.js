@@ -17,7 +17,7 @@ export function liabilityValuesReducer(state=[], action) {
             fieldId: action.payload.valueUpdate.id,
             value: inputVal,
             valueType: "liability",
-            dateModified: new Date().getTime()
+            dateModified: action.payload.valueUpdate.dateModified
         };
 
         let hit = false;

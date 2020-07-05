@@ -4,7 +4,7 @@ export function assetsSheetReducer(state = undefined, action) {
         state = {
             title: "",
             content: [],
-            dateModified: new Date().getTime()
+            dateModified: 0
         }
     }
 
