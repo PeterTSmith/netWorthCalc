@@ -1,16 +1,16 @@
-import { assetsSheetReducer } from '../assetsSheetReducer.js';
+import { liabilitiesSheetReducer } from '../liabilitiesSheetReducer.js';
 
-/*describe('assetsSheetReducer: UPDATE_ASSETS_SHEET undefined state', () => {
+/*describe('liabilitiesSheetReducer: UPDATE_LIABILITIES_SHEET undefined state', () => {
     it('should return array with a retrieved balanceSheet object', () => {
         let testAction = {
-            type: 'UPDATE_ASSETS_SHEET',
+            type: 'UPDATE_LIABILITIES_SHEET',
             payload: {
                 listTitle: "Cash and Investments",
                 name: ""
             }
         };
         let expectedStateValue = {
-            title: "Assets",
+            title: "Liabilities",
             content: [
                 {
                     title: "Cash and Investments",
@@ -24,17 +24,17 @@ import { assetsSheetReducer } from '../assetsSheetReducer.js';
             ],
             dateModified: 55
         };
-        expect(assetsSheetReducer(undefined, testAction)).toEqual(expectedStateValue);
+        expect(liabilitiesSheetReducer(undefined, testAction)).toEqual(expectedStateValue);
     })
 });*/
 
-describe('assetsSheetReducer: RETRIEVE_ASSET_SHEET undefined state', () => {
+describe('liabilitiesSheetReducer: RETRIEVE_ASSET_SHEET undefined state', () => {
     it('should return array with a retrieved balanceSheet object', () => {
         let testAction = {
-            type: 'RETRIEVE_ASSETS_SHEET',
+            type: 'RETRIEVE_LIABILITIES_SHEET',
             payload: {
                 serverSheet: {
-                    title: "Assets",
+                    title: "Liabilities",
                     content: [
                         {
                             title: "Cash and Investments",
@@ -59,7 +59,7 @@ describe('assetsSheetReducer: RETRIEVE_ASSET_SHEET undefined state', () => {
             }
         }
         let expectedStateValue = {
-            title: "Assets",
+            title: "Liabilities",
             content: [
                 {
                     title: "Cash and Investments",
@@ -81,17 +81,17 @@ describe('assetsSheetReducer: RETRIEVE_ASSET_SHEET undefined state', () => {
             ],
             dateModified: 55
         };
-        expect(assetsSheetReducer(undefined, testAction)).toEqual(expectedStateValue);
+        expect(liabilitiesSheetReducer(undefined, testAction)).toEqual(expectedStateValue);
     })
 });
 
-describe('assetsSheetReducer: RETRIEVE_ASSET_SHEET defined state', () => {
+describe('liabilitiesSheetReducer: RETRIEVE_ASSET_SHEET defined state', () => {
     it('should return array with a retrieved balanceSheet object', () => {
         let testAction = {
-            type: 'RETRIEVE_ASSETS_SHEET',
+            type: 'RETRIEVE_LIABILITIES_SHEET',
             payload: {
                 serverSheet: {
-                    title: "Assets",
+                    title: "Liabilities",
                     content: [
                         {
                             title: "Cash and Investments",
@@ -132,7 +132,7 @@ describe('assetsSheetReducer: RETRIEVE_ASSET_SHEET defined state', () => {
             dateModified: 55
         }
         let expectedStateValue = {
-            title: "Assets",
+            title: "Liabilities",
             content: [
                 {
                     title: "Cash and Investments",
@@ -154,11 +154,11 @@ describe('assetsSheetReducer: RETRIEVE_ASSET_SHEET defined state', () => {
             ],
             dateModified: 55
         };
-        expect(assetsSheetReducer(state, testAction)).toEqual(expectedStateValue);
+        expect(liabilitiesSheetReducer(state, testAction)).toEqual(expectedStateValue);
     })
 });
 
-describe('assetsSheetReducer: unrelated action previous state undefined', () => {
+describe('liabilitiesSheetReducer: unrelated action previous state undefined', () => {
     it('should return previous state', () => {
         let testAction = {
             type: 'NEW_TYPE',
@@ -169,18 +169,18 @@ describe('assetsSheetReducer: unrelated action previous state undefined', () => 
             content: [],
             dateModified: 0
         };
-        expect(assetsSheetReducer(undefined, testAction)).toEqual(expectedStateValue);
+        expect(liabilitiesSheetReducer(undefined, testAction)).toEqual(expectedStateValue);
     })
 });
 
-describe('assetsSheetReducer: unrelated action previous state defined', () => {
+describe('liabilitiesSheetReducer: unrelated action previous state defined', () => {
     it('should return previous state', () => {
         let testAction = {
             type: 'NEW_TYPE',
             payload: undefined
         }
         let expectedStateValue = {
-            title: "Assets",
+            title: "Liabilities",
             content: [
                 {
                     title: "Cash and Investments",
@@ -203,7 +203,7 @@ describe('assetsSheetReducer: unrelated action previous state defined', () => {
             dateModified: 55
         };
         let state = {
-            title: "Assets",
+            title: "Liabilities",
             content: [
                 {
                     title: "Cash and Investments",
@@ -225,6 +225,6 @@ describe('assetsSheetReducer: unrelated action previous state defined', () => {
             ],
             dateModified: 55
         }
-        expect(assetsSheetReducer(state, testAction)).toEqual(expectedStateValue);
+        expect(liabilitiesSheetReducer(state, testAction)).toEqual(expectedStateValue);
     })
 });

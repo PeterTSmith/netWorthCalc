@@ -27,21 +27,25 @@ class App extends React.Component {
         this.props.retrieveTotalLiabilityValue(this.props.activeDocId);
 
         this.props.retrieveNetWorthValue(this.props.activeDocId);
+
+        this.state = {
+            stickyNetWorth: false
+        }
     }
 
-    funTest = () => {
+    componentDidMount() {
+        document.addEventListener('scroll', this.getNetWorthClass);
+        //setInterval(this.getNetWorthClass, 100);
+    }
 
-        this.props.updateActiveDocId(1);
-
-        this.props.retrieveAssetsSheet(1);
-        this.props.retrieveAssetValues(1);
-        this.props.retrieveTotalAssetValue(1);
-
-        this.props.retrieveLiabilitiesSheet(1);
-        this.props.retrieveLiabilityValues(1);
-        this.props.retrieveTotalLiabilityValue(1);
-
-        this.props.retrieveNetWorthValue(1);
+    getNetWorthClass = () => {
+        let bounds = document.getElementById('contents').getBoundingClientRect();
+        console.log(bounds);
+        if(bounds.top <= 0) {
+            this.setState({stickyNetWorth: true});
+        }else{
+            this.setState({stickyNetWorth: false});
+        }
 
     }
 
@@ -49,11 +53,11 @@ class App extends React.Component {
         return (
             <div className="netWorthTracker">
                 <div className="netWorthTrackerSheets">
-                    <h2 className="netWorthTrackerTitle" onClick={this.funTest}>
+                    <h2 className="netWorthTrackerTitle">
                         Tracking Your Net Worth
                     </h2>
-                    <div>
-                        <div className="itemRow titleRow">
+                    <div id="contents">
+                        <div className={"itemRow titleRow" + (this.state.stickyNetWorth ? " netRow" : "")}>
                             <div className="itemCellName">
                                 Net Worth
                             </div>
@@ -61,6 +65,7 @@ class App extends React.Component {
                                 { this.props.netWorth }
                             </div>
                         </div>
+                        <div className={(this.state.stickyNetWorth ? "netRowBuffer" : "")}></div>
                         <BalanceSheet title={ 'Assets' } />
                         <BalanceSheet title={ 'Liabilities' } />
                     </div>
